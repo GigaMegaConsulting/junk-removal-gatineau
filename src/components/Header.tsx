@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { siteConfig, availableLangs, type Lang } from "@/lib/site.config";
 import { t } from "@/lib/copy";
 
@@ -16,6 +16,11 @@ export function Header({ lang, altPath }: Props) {
   const tt = t(lang);
   const langs = availableLangs();
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-[#e6e6e6]">
@@ -111,7 +116,7 @@ export function Header({ lang, altPath }: Props) {
 
       {/* Mobile menu drawer */}
       {open && (
-        <div className="md:hidden border-t border-[#e6e6e6] bg-white">
+        <div className="md:hidden border-t border-[#e6e6e6] bg-white max-h-[calc(100dvh-88px)] overflow-y-auto overscroll-contain">
           <nav className="flex flex-col px-4 py-4 gap-1 text-sm text-[#0a0a0a]">
             <Link
               href={`/${lang}`}
