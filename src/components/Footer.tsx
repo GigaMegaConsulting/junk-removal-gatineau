@@ -14,7 +14,7 @@ export function Footer({ lang }: Props) {
     <footer className="bg-[#fafafa] border-t border-[#e6e6e6]">
       <div className="mx-auto max-w-6xl px-6 py-14 grid md:grid-cols-4 gap-10">
         <div>
-          <div className="font-display text-2xl mb-4">{tt.home}</div>
+          <Link href={`/${lang}`} className="font-display text-2xl mb-4 hover:underline block">{tt.home}</Link>
           <a href={`tel:${siteConfig.phone}`} className="phone-chrome text-base">
             {siteConfig.phoneDisplay}
           </a>
