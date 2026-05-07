@@ -58,6 +58,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       "comment-jeter-frigo",
       "comment-jeter-sofa",
       "comment-jeter-electroniques",
+      "comment-jeter-television",
+      "comment-jeter-pneus",
+      "debarras-renovation",
+      "debarras-demenagement",
       "preparation",
     ]) {
       entries.push({
