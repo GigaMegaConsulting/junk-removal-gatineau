@@ -24,8 +24,8 @@ export function Header({ lang, altPath }: Props) {
         </a>
 
         {/* Nav (right) */}
-        <nav className="hidden md:flex items-center gap-6 text-sm uppercase tracking-wide text-[#0a0a0a]">
-          <Link href={`/${lang}`} className="font-medium border border-[#0a0a0a] px-3 py-1.5 rounded">
+        <nav className="hidden md:flex items-stretch gap-6 text-sm uppercase tracking-wide text-[#0a0a0a] h-full">
+          <Link href={`/${lang}`} className="font-medium border border-[#0a0a0a] px-3 py-1.5 rounded self-center">
             {tt.home}
           </Link>
 
@@ -56,7 +56,7 @@ export function Header({ lang, altPath }: Props) {
             </div>
           </div>
 
-          <Link href={`/${lang}/about`} className="hover:underline">{tt.about}</Link>
+          <Link href={`/${lang}/about`} className="hover:underline flex items-center">{tt.about}</Link>
 
           {/* Locations dropdown — same hover-bridge pattern as Services */}
           <div className="relative group h-full flex items-center">
@@ -79,11 +79,11 @@ export function Header({ lang, altPath }: Props) {
             </div>
           </div>
 
-          <Link href={`/${lang}/contact`} className="hover:underline">{tt.contact}</Link>
+          <Link href={`/${lang}/contact`} className="hover:underline flex items-center">{tt.contact}</Link>
 
           {/* Language switcher */}
           {langs.length > 1 && (
-            <div className="flex items-center gap-1 text-xs ml-2 pl-4 border-l border-[#e6e6e6]">
+            <div className="flex items-center gap-1 text-xs ml-2 pl-4 border-l border-[#e6e6e6] self-center">
               {langs.map(l => {
                 const target = l === lang ? null : (altPath?.[l] ?? `/${l}`);
                 const active = l === lang;
