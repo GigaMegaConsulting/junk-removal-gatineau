@@ -53,9 +53,14 @@ export function Header({ lang, altPath }: Props) {
           </Link>
 
           <div className="relative group h-full flex items-center">
-            <span className="cursor-pointer uppercase">{tt.services}</span>
+            <Link href={`/${lang}/services`} className="uppercase hover:underline">{tt.services}</Link>
             <div className="absolute right-0 top-full pt-2 w-72 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition pointer-events-none group-hover:pointer-events-auto z-50">
               <ul className="bg-white border border-[#e6e6e6] rounded-md shadow-lg py-2">
+                <li>
+                  <Link href={`/${lang}/services`} className="block px-4 py-2 text-[13px] normal-case tracking-normal text-[#0a0a0a] font-semibold border-b border-[#e6e6e6] hover:bg-[#f5f5f5]">
+                    {tt.seeAllServices} →
+                  </Link>
+                </li>
                 {c.services.map(s => (
                   <li key={s.slug}>
                     <Link href={`/${lang}/${s.slug}`} className="block px-4 py-2 text-[13px] normal-case tracking-normal text-[#0a0a0a] hover:bg-[#f5f5f5]">
@@ -70,9 +75,14 @@ export function Header({ lang, altPath }: Props) {
           <Link href={`/${lang}/about`} className="hover:underline flex items-center">{tt.about}</Link>
 
           <div className="relative group h-full flex items-center">
-            <span className="cursor-pointer uppercase">{tt.locations}</span>
+            <Link href={`/${lang}/locations`} className="uppercase hover:underline">{tt.locations}</Link>
             <div className="absolute right-0 top-full pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition pointer-events-none group-hover:pointer-events-auto z-50">
               <ul className="bg-white border border-[#e6e6e6] rounded-md shadow-lg py-2 max-h-[60vh] overflow-y-auto">
+                <li>
+                  <Link href={`/${lang}/locations`} className="block px-4 py-2 text-[13px] normal-case tracking-normal text-[#0a0a0a] font-semibold border-b border-[#e6e6e6] hover:bg-[#f5f5f5]">
+                    {tt.seeAllAreas} →
+                  </Link>
+                </li>
                 {c.locations.map((loc, i) => (
                   <li key={loc.slug}>
                     <Link href={`/${lang}/${loc.slug}`} className="block px-4 py-2 text-[13px] normal-case tracking-normal text-[#0a0a0a] hover:bg-[#f5f5f5]">
@@ -158,6 +168,15 @@ export function Header({ lang, altPath }: Props) {
                 </button>
                 {expanded === "services" && (
                   <ul className="pb-3">
+                    <li>
+                      <Link
+                        href={`/${lang}/services`}
+                        className="block py-2 pl-4 text-[15px] font-semibold text-[#0a0a0a]"
+                        onClick={closeMenu}
+                      >
+                        {tt.seeAllServices} →
+                      </Link>
+                    </li>
                     {c.services.map(s => (
                       <li key={s.slug}>
                         <Link
@@ -195,6 +214,15 @@ export function Header({ lang, altPath }: Props) {
                 </button>
                 {expanded === "locations" && (
                   <ul className="pb-3">
+                    <li>
+                      <Link
+                        href={`/${lang}/locations`}
+                        className="block py-2 pl-4 text-[15px] font-semibold text-[#0a0a0a]"
+                        onClick={closeMenu}
+                      >
+                        {tt.seeAllAreas} →
+                      </Link>
+                    </li>
                     {c.locations.map((loc, i) => (
                       <li key={loc.slug}>
                         <Link

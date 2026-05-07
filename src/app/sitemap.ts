@@ -38,6 +38,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       });
     }
 
+    // Services + Locations index hubs (link to all child pages)
+    for (const path of ["services", "locations"]) {
+      entries.push({
+        url: `${base}/${lang}/${path}`,
+        lastModified: now,
+        changeFrequency: "monthly",
+        priority: 0.7,
+        alternates: {
+          languages: Object.fromEntries(langs.map(l => [l, `${base}/${l}/${path}`])),
+        },
+      });
+    }
+
     // Services — slugs differ per lang, paired by index
     for (let i = 0; i < c.services.length; i++) {
       entries.push({
