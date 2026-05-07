@@ -67,12 +67,12 @@ export const siteConfig: SiteConfig = {
   "address": "Gatineau, QC",
   "primaryLang": "fr",
   "secondaryLang": "en",
-  "heroImage": "/hero/main.png",
+  "heroImage": "/hero/junk-removal-gatineau.webp",
   "serviceImages": [
-    "/hero/service-1.png",
-    "/hero/service-2.png",
-    "/hero/service-3.png",
-    "/hero/service-4.png"
+    "/hero/residential-junk-removal-gatineau.webp",
+    "/hero/commercial-junk-removal-gatineau.webp",
+    "/hero/renovation-debris-removal-gatineau.webp",
+    "/hero/estate-cleanout-gatineau.webp"
   ],
   "locationNames": [
     "Hull",

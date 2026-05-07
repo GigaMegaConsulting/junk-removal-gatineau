@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { siteConfig, type Lang } from "@/lib/site.config";
 import { t } from "@/lib/copy";
 import { QuoteForm } from "@/components/QuoteForm";
@@ -20,9 +21,14 @@ export function Hero({ lang }: Props) {
         <div className="grid lg:grid-cols-[1.3fr_1fr] gap-10 items-start">
           <div>
             {siteConfig.heroImage ? (
-              <img
+              <Image
                 src={siteConfig.heroImage}
                 alt={`${siteConfig.niche} ${siteConfig.city}`}
+                width={1536}
+                height={1024}
+                fetchPriority="high"
+                loading="eager"
+                sizes="(min-width: 1024px) 600px, 100vw"
                 className="w-full h-auto aspect-[4/3] object-cover rounded-md"
               />
             ) : (

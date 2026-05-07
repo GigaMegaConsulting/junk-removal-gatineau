@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { resolveLang, langStaticParams } from "@/lib/lang";
 import { siteConfig, availableLangs, type Lang } from "@/lib/site.config";
@@ -57,9 +58,12 @@ export default async function AboutPage({ params }: Props) {
         {siteConfig.heroImage && (
           <section>
             <div className="mx-auto max-w-3xl px-6">
-              <img
+              <Image
                 src={siteConfig.heroImage}
                 alt={c.brandName}
+                width={1536}
+                height={1024}
+                sizes="(min-width: 768px) 720px, 100vw"
                 className="w-full aspect-[16/9] object-cover rounded-md"
               />
             </div>

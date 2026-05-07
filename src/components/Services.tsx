@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { siteConfig, type Lang } from "@/lib/site.config";
 import { t } from "@/lib/copy";
@@ -20,9 +21,12 @@ export function Services({ lang }: Props) {
             <div key={svc.slug} className="grid md:grid-cols-2 gap-8 md:gap-14 items-center">
               <div className={imageOnLeft ? "md:order-1" : "md:order-2"}>
                 {image ? (
-                  <img
+                  <Image
                     src={image}
                     alt={svc.title}
+                    width={1254}
+                    height={1254}
+                    sizes="(min-width: 768px) 50vw, 100vw"
                     className="w-full aspect-[4/3] object-cover rounded-md"
                   />
                 ) : (

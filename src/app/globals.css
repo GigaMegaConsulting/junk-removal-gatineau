@@ -40,19 +40,21 @@ body {
   letter-spacing: -0.01em;
 }
 
-/* Old-school chrome phone graphic — silver beveled look, like the autoglassnola header */
+/* Old-school chrome phone graphic — silver beveled look on a near-black plate.
+   Gradient stops are kept light across the full height so the digits stay
+   readable; the dark plate underneath gives the chrome its contrast. */
 .phone-chrome {
   font-weight: 800;
   letter-spacing: 0.04em;
   font-family: "Impact", "Haettenschweiler", "Arial Narrow Bold", sans-serif;
-  background: linear-gradient(180deg, #f8f8f8 0%, #d4d4d4 50%, #888 51%, #c8c8c8 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #ededed 48%, #b8b8b8 52%, #f5f5f5 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
-  border: 2px solid #888;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);
+  border: 2px solid #5a5a5a;
   padding: 6px 12px;
   border-radius: 4px;
   display: inline-block;
-  background-color: #2a2a2a;
+  background-color: #0a0a0a;
 }

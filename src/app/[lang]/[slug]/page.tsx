@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { siteConfig, availableLangs, type Lang, type ServicePerLang, type LocationPerLang } from "@/lib/site.config";
@@ -126,7 +127,14 @@ export default async function SubPage({ params }: Props) {
         {image && (
           <section className="bg-white">
             <div className="mx-auto max-w-4xl px-6">
-              <img src={image} alt={breadcrumbCurrent} className="w-full aspect-[16/9] object-cover rounded-md" />
+              <Image
+                src={image}
+                alt={breadcrumbCurrent}
+                width={isService ? 1254 : 1536}
+                height={isService ? 1254 : 1024}
+                sizes="(min-width: 768px) 848px, 100vw"
+                className="w-full aspect-[16/9] object-cover rounded-md"
+              />
             </div>
           </section>
         )}
