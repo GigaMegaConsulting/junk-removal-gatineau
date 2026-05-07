@@ -16,7 +16,7 @@ const FAQ: Record<Lang, FaqEntry[]> = {
   fr: [
     {
       q: "Combien coûte un débarras à Gatineau ?",
-      a: "Le prix dépend du volume occupé dans notre camion, mesuré en fraction (1/8, 1/4, 1/2, plein camion). Pour donner un ordre de grandeur, un débarras résidentiel typique de quelques meubles et électroménagers se situe entre 150 $ et 350 $. Une vidange complète de sous-sol ou un débarras de succession peut aller de 400 $ à 800 $. Nous donnons toujours un prix fixe sur place avant de commencer — pas de surprises.",
+      a: "Le prix dépend du volume que vos articles occupent dans notre camion. Plutôt que des frais cachés, nous donnons toujours un prix fixe sur place avant de commencer le chargement — sans surprise. Pour obtenir un prix précis pour vos articles, demandez une soumission gratuite par téléphone ou via notre formulaire en ligne. C'est sans engagement et nous répondons rapidement.",
     },
     {
       q: "Combien de temps prend un débarras ?",
@@ -58,7 +58,7 @@ const FAQ: Record<Lang, FaqEntry[]> = {
   en: [
     {
       q: "How much does junk removal cost in Gatineau?",
-      a: "Pricing is based on the volume your items occupy in our truck, measured in fractions (1/8, 1/4, 1/2, full truck). For reference, a typical residential pickup of a few furniture pieces and appliances runs between $150 and $350. A full basement cleanout or estate clearing usually falls between $400 and $800. We always give you a firm price on-site before we start loading — no surprises.",
+      a: "Pricing is based on the volume your items occupy in our truck. Rather than hidden fees, we always give you a firm price on-site before we start loading — no surprises. For an exact price for your items, request a free quote by phone or via our online form. It's no-obligation and we respond quickly.",
     },
     {
       q: "How long does a junk removal take?",

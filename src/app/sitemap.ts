@@ -51,18 +51,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       });
     }
 
-    // FAQ + Pricing — long-tail content pages
-    for (const path of ["faq", "pricing"]) {
-      entries.push({
-        url: `${base}/${lang}/${path}`,
-        lastModified: now,
-        changeFrequency: "monthly",
-        priority: 0.7,
-        alternates: {
-          languages: Object.fromEntries(langs.map(l => [l, `${base}/${l}/${path}`])),
-        },
-      });
-    }
+    // FAQ — long-tail content page
+    entries.push({
+      url: `${base}/${lang}/faq`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+      alternates: {
+        languages: Object.fromEntries(langs.map(l => [l, `${base}/${l}/faq`])),
+      },
+    });
 
     // Services — slugs differ per lang, paired by index
     for (let i = 0; i < c.services.length; i++) {

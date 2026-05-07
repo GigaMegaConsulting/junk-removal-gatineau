@@ -72,8 +72,6 @@ export function Header({ lang, altPath }: Props) {
             </div>
           </div>
 
-          <Link href={`/${lang}/pricing`} className="hover:underline flex items-center">{tt.pricing}</Link>
-
           <Link href={`/${lang}/faq`} className="hover:underline flex items-center">{tt.faq}</Link>
 
           <Link href={`/${lang}/about`} className="hover:underline flex items-center">{tt.about}</Link>
@@ -194,16 +192,6 @@ export function Header({ lang, altPath }: Props) {
                     ))}
                   </ul>
                 )}
-              </li>
-
-              <li>
-                <Link
-                  href={`/${lang}/pricing`}
-                  className="block py-4 border-b border-[#e6e6e6] uppercase text-base tracking-wide"
-                  onClick={closeMenu}
-                >
-                  {tt.pricing}
-                </Link>
               </li>
 
               <li>

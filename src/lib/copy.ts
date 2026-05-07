@@ -40,8 +40,6 @@ const STRINGS = {
     quickResponse: "Réponse rapide • Estimation gratuite",
     faq: "Questions fréquentes",
     faqIntro: "Tout ce qu'il faut savoir avant de réserver un débarras.",
-    pricing: "Prix et tarifs",
-    pricingIntro: "Comment nous calculons le prix d'un débarras à",
   },
   en: {
     home: "Home",
@@ -81,8 +79,6 @@ const STRINGS = {
     quickResponse: "Fast response • Free estimate",
     faq: "Frequently Asked Questions",
     faqIntro: "Everything you need to know before booking a junk removal.",
-    pricing: "Pricing",
-    pricingIntro: "How we price junk removal in",
   },
 } as const;
 
