@@ -52,7 +52,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
 
     // FAQ + long-tail guide pages
-    for (const path of ["faq", "comment-jeter-matelas", "preparation"]) {
+    for (const path of [
+      "faq",
+      "comment-jeter-matelas",
+      "comment-jeter-frigo",
+      "comment-jeter-sofa",
+      "comment-jeter-electroniques",
+      "preparation",
+    ]) {
       entries.push({
         url: `${base}/${lang}/${path}`,
         lastModified: now,
