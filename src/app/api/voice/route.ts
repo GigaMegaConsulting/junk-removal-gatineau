@@ -51,8 +51,12 @@ function buildTwiml(): string {
     const farewellEn = "Thanks, we will get back to you shortly.";
 
     // No `action` on <Record> — once recording ends Twilio continues with the
-    // next verbs (farewell + hangup). The transcript arrives asynchronously
-    // via transcribeCallback.
+    // next verbs (farewell + hangup).
+    //
+    // We do NOT use Twilio's transcribe="true" because Twilio's transcription
+    // service is English-only and produced garbled output for French
+    // messages. Instead, mission-control's voicemails dashboard pulls the
+    // recording audio and runs OpenAI Whisper (auto-detects language).
     return `<?xml version="1.0" encoding="UTF-8"?>
 <Response>
   <Say voice="Polly.Chantal" language="fr-CA">${escapeXml(greetingFr)}</Say>
@@ -62,8 +66,6 @@ function buildTwiml(): string {
     timeout="5"
     finishOnKey="*"
     playBeep="true"
-    transcribe="true"
-    transcribeCallback="/api/voice/transcribe"
   />
   <Say voice="Polly.Chantal" language="fr-CA">${escapeXml(farewellFr)}</Say>
   <Say voice="Polly.Joanna" language="en-US">${escapeXml(farewellEn)}</Say>
