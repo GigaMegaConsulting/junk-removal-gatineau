@@ -57,11 +57,13 @@ export async function POST(req: NextRequest) {
 
   const to = process.env.LEAD_TO_EMAIL || TO_EMAIL_DEFAULT;
   const from = `${siteConfig.city} Leads <${process.env.LEAD_FROM_EMAIL || FROM_EMAIL_DEFAULT}>`;
-  const subject = `Nouveau lead — ${siteConfig.brandName ?? siteConfig.domain} (${firstName} ${lastName})`.trim();
+  // Brand lives on the per-language config block; fall back to the other lang or the domain.
+  const brandName = siteConfig[lang]?.brandName ?? siteConfig[lang === "fr" ? "en" : "fr"]?.brandName ?? siteConfig.domain;
+  const subject = `Nouveau lead — ${brandName} (${firstName} ${lastName})`.trim();
 
   const html = `
     <h2>New lead from ${siteConfig.domain}</h2>
-    <p><strong>Site:</strong> ${siteConfig.brandName ?? siteConfig.domain}<br/>
+    <p><strong>Site:</strong> ${brandName}<br/>
        <strong>Niche:</strong> ${siteConfig.niche}<br/>
        <strong>City:</strong> ${siteConfig.city}, ${siteConfig.state}<br/>
        <strong>Source:</strong> ${source} (${lang})</p>
@@ -74,7 +76,7 @@ export async function POST(req: NextRequest) {
 
   const text = [
     `New lead from ${siteConfig.domain}`,
-    `Site: ${siteConfig.brandName ?? siteConfig.domain}`,
+    `Site: ${brandName}`,
     `Niche: ${siteConfig.niche}`,
     `City: ${siteConfig.city}, ${siteConfig.state}`,
     `Source: ${source} (${lang})`,
