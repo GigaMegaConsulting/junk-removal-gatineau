@@ -107,6 +107,39 @@ export default async function SubPage({ params }: Props) {
     .map(p => p.trim())
     .filter(Boolean);
 
+  // Service JSON-LD on service pages — produces a rich "service" snippet in
+  // SERP. We don't emit it for location pages because schema.org doesn't have
+  // a clean "service-area location page" type.
+  const serviceLd = isService
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        serviceType: siteConfig.niche,
+        name: (item as ServicePerLang).title,
+        description: (item as ServicePerLang).description,
+        provider: {
+          "@type": "LocalBusiness",
+          name: c.brandName,
+          telephone: siteConfig.phone,
+          email: siteConfig.email,
+          url: `https://${siteConfig.domain}`,
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: siteConfig.city,
+            addressRegion: siteConfig.state,
+            addressCountry: "CA",
+          },
+        },
+        areaServed: siteConfig.locationNames.map(name => ({ "@type": "City", name })),
+        offers: {
+          "@type": "Offer",
+          url: `https://${siteConfig.domain}/${validated}/${slug}`,
+          priceCurrency: "CAD",
+          availability: "https://schema.org/InStock",
+        },
+      }
+    : null;
+
   return (
     <>
       <Header lang={validated} altPath={altPath} />
@@ -196,6 +229,12 @@ export default async function SubPage({ params }: Props) {
         </section>
       </main>
       <Footer lang={validated} />
+      {serviceLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceLd) }}
+        />
+      )}
     </>
   );
 }
