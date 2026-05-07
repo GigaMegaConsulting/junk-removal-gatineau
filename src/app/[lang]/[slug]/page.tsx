@@ -107,6 +107,33 @@ export default async function SubPage({ params }: Props) {
     .map(p => p.trim())
     .filter(Boolean);
 
+  // BreadcrumbList JSON-LD — earns the breadcrumb display in SERP and helps
+  // Google understand the site hierarchy.
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: c.brandName,
+        item: `https://${siteConfig.domain}/${validated}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: breadcrumbLabel,
+        item: `https://${siteConfig.domain}/${validated}/${isService ? "services" : "locations"}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: breadcrumbCurrent,
+        item: `https://${siteConfig.domain}/${validated}/${slug}`,
+      },
+    ],
+  };
+
   // Service JSON-LD on service pages — produces a rich "service" snippet in
   // SERP. We don't emit it for location pages because schema.org doesn't have
   // a clean "service-area location page" type.
@@ -229,6 +256,10 @@ export default async function SubPage({ params }: Props) {
         </section>
       </main>
       <Footer lang={validated} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
       {serviceLd && (
         <script
           type="application/ld+json"
