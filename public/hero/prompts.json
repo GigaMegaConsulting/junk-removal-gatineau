@@ -1,0 +1,37 @@
+[
+  {
+    "filename": "main.png",
+    "size": "1536x1024",
+    "role": "hero",
+    "label": "Hero",
+    "prompt": "Close-up of work-gloved hands lifting a worn cardboard box filled with household items into a truck bed, natural daylight, shallow depth of field, residential driveway visible but blurred in background, realistic documentary style photography, no branding visible"
+  },
+  {
+    "filename": "service-1.png",
+    "size": "1024x1024",
+    "role": "service",
+    "label": "Residential Junk Pickup",
+    "prompt": "Worker's hands in work gloves loading bulky furniture including an old sofa and wooden dresser onto a residential junk removal truck, suburban Gatineau home driveway, natural overcast lighting, photojournalistic style, 4:3 ratio"
+  },
+  {
+    "filename": "service-2.png",
+    "size": "1024x1024",
+    "role": "service",
+    "label": "Commercial Bin Service",
+    "prompt": "Large commercial waste bin being filled with construction debris, broken drywall and lumber pieces, industrial site background softly blurred, worker's arms visible handling materials, natural daylight, square composition"
+  },
+  {
+    "filename": "service-3.png",
+    "size": "1024x1024",
+    "role": "service",
+    "label": "Renovation Debris Removal",
+    "prompt": "Hands sorting through renovation waste including old tiles, wood scraps and metal fixtures in a truck bed, construction site barely visible background, authentic work scene, natural lighting, shallow focus"
+  },
+  {
+    "filename": "service-4.png",
+    "size": "1024x1024",
+    "role": "service",
+    "label": "Estate Cleanouts",
+    "prompt": "Workers' hands carefully packing boxes and clearing out furniture from an estate cleanout, interior room with hardwood floors blurred background, documentary photography style, warm natural window light, square format"
+  }
+]
