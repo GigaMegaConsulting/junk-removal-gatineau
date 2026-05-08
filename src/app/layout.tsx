@@ -75,7 +75,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     priceRange: "$$",
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: siteConfig.primaryLang === "fr" ? "Services de débarras" : "Junk removal services",
+      // Niche-agnostic: use the brand name. Brand already encodes the niche
+      // via the per-language siteConfig (e.g. "Débarras Gatineau" / "Gatineau
+      // Junk Removal").
+      name: `${primary.brandName} — Services`,
       itemListElement: (primary.services || []).map(svc => ({
         "@type": "Offer",
         itemOffered: {
