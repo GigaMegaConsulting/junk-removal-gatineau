@@ -63,7 +63,7 @@ export const siteConfig: SiteConfig = {
   "domain": "gatineaudebarras.com",
   "phone": "+14382566448",
   "phoneDisplay": "(438) 256-6448",
-  "email": "leads@gatineaudebarras.com",
+  "email": "info@gatineaudebarras.com",
   "address": "Gatineau, QC",
   "primaryLang": "fr",
   "secondaryLang": "en",
