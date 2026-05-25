@@ -863,3 +863,442 @@ export function getPostRenoGuide(lang: Lang): LongFormContent {
 export function getMovingDayGuide(lang: Lang): LongFormContent {
   return MOVING_DAY[lang];
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Estate / succession cleanout — vider la maison après un décès
+// ─────────────────────────────────────────────────────────────────────────────
+const ESTATE_CLEANOUT: Record<Lang, LongFormContent> = {
+  fr: {
+    title: "Vider une maison après un décès à Gatineau : guide pratique de succession",
+    metaDescription: "Comment organiser le débarras d'une succession à Gatineau : par où commencer, ce qu'on garde, ce qu'on donne, et comment gérer le volume sans s'épuiser.",
+    intro: "Vider la maison d'un parent ou d'un proche après un décès, c'est rarement une journée. C'est souvent plusieurs semaines de tri émotionnel, de décisions de famille, et de logistique. Personne n'est préparé à ça. Voici une approche en étapes qui simplifie le travail et évite les erreurs les plus communes — sans pression de temps inutile.",
+    sections: [
+      {
+        heading: "Avant de toucher quoi que ce soit : la documentation",
+        paragraphs: [
+          "Si la succession est gérée par un liquidateur (exécuteur testamentaire), les objets de valeur appartiennent légalement à la succession jusqu'à la liquidation officielle. Avant de donner, jeter, ou même déplacer des biens significatifs, parlez au liquidateur. Un courriel suffit — vous voulez seulement une trace écrite de la coordination.",
+          "Photographiez chaque pièce avant de commencer. Pas pour l'inventaire fiscal — pour vous. Une fois qu'une pièce est vidée, vous ne reverrez plus jamais comment elle était. Beaucoup de gens regrettent de ne pas avoir pris ces photos.",
+          "Mettez de côté tous les documents (papiers, lettres, photos, agendas) dans des boîtes étiquetées. Vous trierez plus tard, dans un endroit calme. Pas pendant la première semaine.",
+        ],
+      },
+      {
+        heading: "Le tri en quatre piles, pas en deux",
+        paragraphs: [
+          "L'erreur classique : tout devient « à garder » ou « à jeter », et on n'arrive jamais au bout. Utilisez quatre piles : (1) à garder pour la famille, (2) à donner ou vendre, (3) à donner à un organisme de charité, (4) à débarrasser.",
+          "Pile 1 : ce qui a une vraie valeur sentimentale ou matérielle. Décidez en famille — ne décidez jamais seul des objets de valeur sentimentale partagée.",
+          "Pile 2 : meubles, électros et objets en bon état que vous pouvez vendre via Marketplace, Kijiji, ou un encan local. Le travail de revente est important mais c'est du temps — décidez si la famille a la disponibilité.",
+          "Pile 3 : ce qui est en bon état mais que personne ne veut chez vous. Sœurs Antoniennes de Marie, Saint-Vincent-de-Paul, Renaissance, Friperie La Recycle — tous reçoivent meubles et vêtements en bon état dans la région.",
+          "Pile 4 : tout le reste. Matelas tachés, électros morts, vêtements abîmés, papiers personnels non importants, vieille vaisselle fendue, électronique des années 90. C'est ce qui va dans le service de débarras.",
+        ],
+      },
+      {
+        heading: "L'ordre des pièces",
+        paragraphs: [
+          "Commencez par la pièce la moins chargée émotionnellement : généralement la salle de bain, le garage ou le sous-sol. Ce sont des espaces où on ne s'attache pas et où on peut faire du progrès visible rapidement, ce qui donne le momentum pour les pièces plus difficiles.",
+          "Gardez les chambres et le salon pour la fin. Ce sont les espaces avec le plus de souvenirs et le plus de décisions difficiles.",
+          "La cuisine est entre les deux. La vaisselle de tous les jours et les électros se trient assez vite, mais les services à thé hérités, les vieilles recettes manuscrites, et la batterie de cuisine qui appartient à la famille depuis 50 ans demandent du temps.",
+        ],
+      },
+      {
+        heading: "Le rôle du service de débarras",
+        paragraphs: [
+          "Une fois la pile 4 identifiée, un service de débarras résidentiel à Gatineau peut vider une maison complète en une demi-journée à une journée selon le volume. C'est l'option qui sauve le plus de temps et d'énergie — surtout si la famille est dispersée géographiquement et que vous n'êtes pas sur place pour gérer plusieurs allers-retours à l'écocentre.",
+          "Notre équipe pour les successions à Gatineau et dans l'Outaouais : nous arrivons avec un gros camion, vous nous montrez les pièces et les piles déjà triées, nous chargeons et nous redirigeons chaque catégorie au bon endroit (récupération, recyclage, écocentre, dons aux organismes selon ce qui est en bon état).",
+          "Nous pouvons aussi prendre seulement la pile 4 ou faire la maison complète si vous nous donnez carte blanche après votre tri. Soumission gratuite avec visite sur place — nous comprenons que le contexte demande de la délicatesse et nous travaillons en conséquence.",
+        ],
+      },
+      {
+        heading: "Les pièges à éviter",
+        paragraphs: [
+          "Jeter trop vite : dans les premières semaines, l'urgence émotionnelle pousse à tout liquider. Plusieurs personnes regrettent ensuite des décisions prises sous la pression. Si rien ne presse côté liquidation, donnez-vous 2-3 semaines avant les décisions irréversibles.",
+          "Sous-estimer le volume : une maison de 30 ans contient typiquement 3 à 5 camions complets de contenu. Ce qui semble peu visuellement devient énorme une fois chargé. Mieux vaut prévoir un débarras en deux fois qu'un sous-estimé en une fois.",
+          "Faire ça seul. Si possible, partagez le travail entre 2-3 personnes pour éviter l'épuisement physique et émotionnel. Une journée de tri en équipe accomplit 4-5 fois ce que la même personne ferait seule sur une semaine.",
+        ],
+      },
+    ],
+    closing: "Vider une maison après un décès, c'est l'un des projets les plus exigeants qu'une famille peut traverser. Une bonne planification et le bon soutien font toute la différence. Pour une soumission gratuite avec visite sur place — sans engagement et avec la discrétion que la situation demande — appelez-nous ou utilisez le formulaire.",
+  },
+  en: {
+    title: "Clearing Out a Home After a Death in Gatineau: Estate Cleanout Guide",
+    metaDescription: "How to organize an estate cleanout in Gatineau: where to start, what to keep, what to donate, and how to handle the volume without burning out.",
+    intro: "Clearing a parent's or relative's home after a death is rarely a single day. It's usually several weeks of emotional sorting, family decisions, and logistics. No one is prepared for it. Here's a step-by-step approach that simplifies the work and avoids the most common mistakes — with no unnecessary time pressure.",
+    sections: [
+      {
+        heading: "Before touching anything: the paperwork",
+        paragraphs: [
+          "If the estate is managed by a liquidator (executor), valuable items legally belong to the estate until official liquidation. Before donating, throwing out, or even moving significant belongings, talk to the liquidator. An email is enough — you just want written coordination.",
+          "Photograph every room before starting. Not for the tax inventory — for you. Once a room is emptied, you'll never see it the same way again. Many people regret not taking those photos.",
+          "Set aside all documents (papers, letters, photos, planners) in labelled boxes. You'll sort them later in a calm setting — not in the first week.",
+        ],
+      },
+      {
+        heading: "Sorting into four piles, not two",
+        paragraphs: [
+          "Classic mistake: everything becomes 'keep' or 'toss', and you never get to the end. Use four piles: (1) keep for family, (2) donate or sell, (3) donate to charity, (4) clear out.",
+          "Pile 1: items with real sentimental or material value. Decide as a family — never make solo decisions on shared sentimental items.",
+          "Pile 2: furniture, appliances, items in good condition you can resell via Marketplace, Kijiji, or a local auction. Reselling matters but takes time — decide if the family has the bandwidth.",
+          "Pile 3: things in good condition that no one in the family wants. Sœurs Antoniennes de Marie, Saint-Vincent-de-Paul, Renaissance, Friperie La Recycle — all accept furniture and clothing in good condition in the region.",
+          "Pile 4: everything else. Stained mattresses, dead appliances, damaged clothing, non-essential personal papers, chipped dishware, 90s electronics. This is what goes to the junk removal service.",
+        ],
+      },
+      {
+        heading: "Room order",
+        paragraphs: [
+          "Start with the least emotionally loaded room: usually the bathroom, garage, or basement. These are spaces you don't attach to, and you can make visible progress fast — that builds momentum for the harder rooms.",
+          "Save bedrooms and the living room for last. These hold the most memories and the toughest decisions.",
+          "The kitchen sits in between. Everyday dishes and appliances sort quickly, but the inherited tea set, handwritten recipes, and the cookware that's been in the family for 50 years take time.",
+        ],
+      },
+      {
+        heading: "The role of a junk removal service",
+        paragraphs: [
+          "Once pile 4 is identified, a residential junk removal service in Gatineau can empty a full house in half a day to a day depending on volume. It's the option that saves the most time and energy — especially if family is spread out geographically and you can't manage multiple eco-centre trips.",
+          "Our estate cleanout crew in Gatineau and the Outaouais: we arrive with a large truck, you show us the rooms and pre-sorted piles, we load and redirect each category to the right destination (recovery, recycling, eco-centre, charity donations when items are in good shape).",
+          "We can take just pile 4 or do the full house if you give us carte blanche after your sort. Free quote with on-site visit — we understand the context calls for sensitivity and work accordingly.",
+        ],
+      },
+      {
+        heading: "Pitfalls to avoid",
+        paragraphs: [
+          "Throwing things out too fast: in the first weeks, emotional urgency pushes for total liquidation. Many regret decisions made under that pressure later. If nothing is pressing on the legal side, give yourself 2-3 weeks before irreversible choices.",
+          "Underestimating volume: a 30-year-old home typically holds 3-5 full truckloads. What looks small visually becomes huge once loaded. Better to plan a two-pass cleanout than to underestimate a single one.",
+          "Doing it alone. If possible, share the work across 2-3 people to avoid physical and emotional burnout. A team day accomplishes 4-5x what the same person would do solo over a week.",
+        ],
+      },
+    ],
+    closing: "Emptying a home after a death is one of the most demanding projects a family can go through. Good planning and the right support make all the difference. For a free on-site quote — no obligation, with the discretion the situation deserves — call or use the form.",
+  },
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Garage / basement / shed cleanout
+// ─────────────────────────────────────────────────────────────────────────────
+const GARAGE_CLEANOUT: Record<Lang, LongFormContent> = {
+  fr: {
+    title: "Comment vider un garage encombré à Gatineau (sans tout jeter)",
+    metaDescription: "Méthode étape par étape pour vider un garage rempli depuis 10 ans à Gatineau : tri rapide, ce qui se recycle, ce qui se vend, et le ramassage des encombrants.",
+    intro: "Un garage qui s'est rempli pendant 10-15 ans contient en moyenne 3 fois plus que ce qu'on pense. Pour quelqu'un qui s'y attaque seul en fin de semaine, c'est un projet qui devient vite décourageant. Voici une méthode qui transforme la corvée en une journée bien rangée — avec les bons partenaires pour évacuer le volume.",
+    sections: [
+      {
+        heading: "Avant de commencer : sortez tout dehors",
+        paragraphs: [
+          "C'est la règle d'or des pros du désencombrement : sortir littéralement chaque objet du garage avant de trier. Sans cette étape, vous ne voyez jamais le vrai volume et vous gardez des choses simplement parce qu'elles « ne dérangent pas là où elles sont ».",
+          "Choisissez une journée sèche, avec une matinée libre. Étalez tout sur l'entrée ou la pelouse. La taille réelle du tas va vous surprendre — c'est exactement ce qu'il faut pour prendre les bonnes décisions.",
+          "Pendant que le garage est vide, nettoyez-le et examinez l'état du plancher, des murs, et de la porte. C'est le seul moment où vous pourrez le faire pendant les 10 prochaines années.",
+        ],
+      },
+      {
+        heading: "Le tri en 5 catégories",
+        paragraphs: [
+          "1. Ce qui revient au garage : outils que vous utilisez vraiment, équipement saisonnier nécessaire (pneus, déneigement, jardinage). Si vous ne l'avez pas touché depuis 2 ans, ça ne revient pas.",
+          "2. Ce qui appartient ailleurs : vélos qui peuvent aller dans le cabanon, conserves qui devraient être dans le sous-sol, équipement sportif qui va à la cave. Redistribuez immédiatement.",
+          "3. À donner ou vendre : équipement en bon état mais inutilisé. Tondeuse de remplacement, vélo des enfants qui ont grandi, outils en double. Marketplace, Kijiji, ou écureuil local — bouge en 1-2 semaines.",
+          "4. Recyclage spécialisé : peinture séchée (écocentre), huile à moteur usagée (Canadian Tire ou centre auto), batteries de voiture (reprise gratuite par tout détaillant), pneus (4 par année gratuits à l'écocentre municipal).",
+          "5. Débarras : meubles brisés, vieux barbecue rouillé, planches sans usage, contenants vides, jouets cassés, et la collection de cartons qu'on garde « au cas où ». C'est le volume principal pour un service de débarras.",
+        ],
+      },
+      {
+        heading: "Les pièges spécifiques au garage",
+        paragraphs: [
+          "Produits chimiques : peintures, solvants, huiles, fluide de transmission, antigel. Ne mettez JAMAIS ces produits dans les ordures régulières ni dans le bac de récupération. À Gatineau, l'écocentre municipal accepte les RDD (résidus domestiques dangereux) sans frais pour les résidents — c'est le seul bon endroit pour ces produits.",
+          "Pneus : la municipalité accepte 4 pneus par année gratuitement par foyer à l'écocentre. Au-delà, des frais s'appliquent. Si vous avez accumulé 12-15 pneus depuis 5 changements de roues, un service de débarras les prend en un seul passage.",
+          "Cartons et matériel inflammable : un garage encombré de cartons, vieux journaux, et tissu sec à proximité d'un chauffe-eau ou d'un véhicule, c'est un risque d'incendie réel. C'est presque toujours la première chose qui doit partir.",
+        ],
+      },
+      {
+        heading: "Quand appeler un service de débarras",
+        paragraphs: [
+          "Si la pile 5 (« débarras ») dépasse une dizaine de gros objets ou une demi-charge de pickup, le calcul change vite. Plusieurs allers-retours à l'écocentre + le temps que vous y passez + l'usure de votre véhicule = souvent plus cher en temps et argent qu'un service de débarras qui vient une fois.",
+          "Un service de débarras à Gatineau qui vient sur place peut typiquement vider le contenu d'un garage simple en 45-60 minutes, un garage double encombré depuis 15 ans en 90 minutes. Notre équipe redirige chaque catégorie au bon endroit : recyclage métallique, recyclage du bois, écocentre pour les RDD, récupération pour le réutilisable.",
+          "Si vous avez un meuble qui peut servir à un organisme de charité, on peut le déposer sur la route — sinon on prend tout en un passage.",
+        ],
+      },
+      {
+        heading: "Pour que ça reste rangé",
+        paragraphs: [
+          "Étiquetez des zones : outils manuels, outils électriques, équipement saisonnier été, équipement saisonnier hiver, accessoires automobiles. Sans zones, tout va revenir au chaos en 6 mois.",
+          "Suspendez ce qui peut l'être : vélos au mur, échelles sous le plafond, outils sur panneau perforé. Vous récupérez 30-40 % du plancher.",
+          "Une règle simple : un nouveau projet stocké dans le garage = un vieux objet qui en sort. Sans cette règle, l'encombrement revient inévitablement.",
+        ],
+      },
+    ],
+    closing: "Un garage vidé proprement, c'est une journée bien investie qui change votre rapport à l'espace pour des années. Pour le volume qui doit partir, demandez une soumission gratuite de débarras — nous venons sur place, on évalue, et on charge tout en un seul passage.",
+  },
+  en: {
+    title: "How to Clear Out a Cluttered Garage in Gatineau (Without Throwing Everything Away)",
+    metaDescription: "Step-by-step method to empty a 10-year-old packed garage in Gatineau: fast sorting, what recycles, what sells, and bulk pickup options.",
+    intro: "A garage that has been filling up for 10-15 years usually holds 3x more than you think. For someone tackling it alone on a weekend, it gets discouraging fast. Here's a method that turns the chore into a well-organized day — with the right partners to haul the volume away.",
+    sections: [
+      {
+        heading: "Before you start: take everything outside",
+        paragraphs: [
+          "Golden rule of pro declutterers: literally remove every item from the garage before sorting. Without this step, you never see the real volume and you keep things just because 'they're not in the way where they are'.",
+          "Pick a dry day with a free morning. Spread it all out on the driveway or lawn. The actual size of the pile will surprise you — that's exactly what you need to make good decisions.",
+          "While the garage is empty, clean it and check the floor, walls, and door. It's the only time you'll do this for the next 10 years.",
+        ],
+      },
+      {
+        heading: "Sorting into 5 categories",
+        paragraphs: [
+          "1. Going back to the garage: tools you actually use, necessary seasonal gear (tires, snow removal, gardening). If you haven't touched it in 2 years, it doesn't come back.",
+          "2. Belongs somewhere else: bikes that can go in the shed, canned goods that should be in the basement, sports gear that goes to the rec room. Redistribute immediately.",
+          "3. Donate or sell: equipment in good shape but unused. Backup mower, kid's bike they outgrew, duplicate tools. Marketplace, Kijiji, or local buy-nothing — gone in 1-2 weeks.",
+          "4. Specialized recycling: dried paint (eco-centre), used motor oil (Canadian Tire or auto shop), car batteries (free takeback at any retailer), tires (4 per year free at the municipal eco-centre).",
+          "5. Junk removal: broken furniture, rusty old BBQ, scrap lumber, empty containers, broken toys, and the cardboard stash kept 'just in case'. This is the main volume for a removal service.",
+        ],
+      },
+      {
+        heading: "Garage-specific pitfalls",
+        paragraphs: [
+          "Chemicals: paint, solvents, oils, transmission fluid, antifreeze. NEVER put these in regular trash or recycling. In Gatineau, the municipal eco-centre accepts household hazardous waste (HHW) free of charge for residents — the only correct destination.",
+          "Tires: the city accepts 4 tires per household per year free at the eco-centre. Beyond that, fees apply. If you've collected 12-15 tires from 5 wheel changes, a removal service takes them in one trip.",
+          "Cardboard and dry combustibles: a garage cluttered with cardboard, old papers, and dry fabric near a water heater or vehicle is a real fire risk. It's almost always the first thing that should go.",
+        ],
+      },
+      {
+        heading: "When to call a junk removal service",
+        paragraphs: [
+          "If pile 5 ('junk removal') exceeds ten large items or half a pickup load, the math shifts fast. Multiple eco-centre runs + your time + vehicle wear = often more expensive in time and money than a removal service that comes once.",
+          "A Gatineau junk removal service that comes on-site can typically empty a single garage in 45-60 minutes, a double garage cluttered for 15 years in 90 minutes. Our crew redirects each category to the right destination: metal recycling, wood recycling, eco-centre for HHW, recovery for reusables.",
+          "If you have furniture that could serve a charity, we can drop it off en route — otherwise we take everything in one pass.",
+        ],
+      },
+      {
+        heading: "Keeping it tidy",
+        paragraphs: [
+          "Label zones: hand tools, power tools, summer seasonal, winter seasonal, automotive. Without zones, everything reverts to chaos in 6 months.",
+          "Hang what can hang: bikes on the wall, ladders under the ceiling, tools on a pegboard. You reclaim 30-40% of floor space.",
+          "Simple rule: a new project stored in the garage = an old item that leaves. Without this rule, clutter inevitably returns.",
+        ],
+      },
+    ],
+    closing: "A properly emptied garage is a well-invested day that changes your relationship with the space for years. For the volume that has to go, request a free junk removal quote — we come on-site, evaluate, and load everything in a single pass.",
+  },
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Commercial / office cleanout
+// ─────────────────────────────────────────────────────────────────────────────
+const COMMERCIAL_CLEANOUT: Record<Lang, LongFormContent> = {
+  fr: {
+    title: "Débarras commercial et de bureau à Gatineau : ce qu'il faut savoir",
+    metaDescription: "Débarras de bureaux, locaux commerciaux et restaurants à Gatineau : ce qui se prend, comment ça se planifie, et ce que vos contrats de location exigent souvent.",
+    intro: "Vider un bureau, un local commercial ou un restaurant à Gatineau n'a pas grand-chose à voir avec un débarras résidentiel. C'est plus de volume, plus de matériaux spécialisés, et presque toujours une contrainte de date due à la fin de bail. Voici comment planifier un débarras commercial sans rater de date ni perdre votre dépôt.",
+    sections: [
+      {
+        heading: "Ce que votre bail exige presque toujours",
+        paragraphs: [
+          "La majorité des baux commerciaux à Gatineau exigent que le locataire remette le local « dans l'état où il l'a reçu », ce qui inclut souvent : retrait des cloisons et améliorations locatives, démontage et retrait des enseignes intérieures et extérieures, retrait de tout équipement non fixé, et nettoyage final professionnel.",
+          "Lisez attentivement les clauses « remise des lieux » ou « état des lieux à la fin du bail ». Plusieurs propriétaires retiennent une partie du dépôt si le locataire laisse derrière lui des éléments qu'il devait retirer — même s'ils sont fonctionnels.",
+          "Si vous avez des doutes sur ce qui doit partir et ce qui doit rester, demandez confirmation écrite au propriétaire avant de commencer le débarras. Un courriel suffit comme trace.",
+        ],
+      },
+      {
+        heading: "Ce qu'on prend en débarras commercial",
+        paragraphs: [
+          "Mobilier de bureau : bureaux, chaises, classeurs, postes de travail démontés, étagères. Si le mobilier est en bon état, on peut le rediriger vers une bourse de mobilier de bureau plutôt que l'écocentre.",
+          "Équipement spécialisé : équipement de restaurant (cuisinières industrielles, lave-vaisselle commerciaux, hottes), équipement de salle de gym, équipement de salon (séchoirs, lavabos), équipement de garage commercial.",
+          "Matériel électronique et de TI : ordinateurs, imprimantes multifonctions, écrans, serveurs, câblage réseau. Tout ça passe par les filières de recyclage électronique (ARPE-Québec) plutôt que l'enfouissement.",
+          "Cloisons et améliorations locatives : panneaux de gypse, faux planchers, plafonds suspendus démontés, moquette commerciale. C'est le volume principal d'un débarras de fin de bail.",
+        ],
+      },
+      {
+        heading: "Planifier le débarras pour la date de remise des clés",
+        paragraphs: [
+          "Compter à rebours à partir de la date de remise des clés (souvent le dernier jour du dernier mois du bail). Vous voulez : le débarras complet 3-4 jours avant la remise, le nettoyage final 1-2 jours avant la remise, et la remise effective avec votre propriétaire à la date prévue.",
+          "Réservez le débarras 2-3 semaines à l'avance. Les fins de bail commerciales se concentrent souvent en juin (avant le 1er juillet) et en décembre — la disponibilité se resserre dans ces périodes.",
+          "Si vous déménagez votre équipement ailleurs (relocalisation, et pas fermeture), coordonnez avec le déménageur commercial avant de fixer le débarras. Vous voulez que le déménagement précède le débarras de quelques jours pour ne pas mélanger les deux.",
+        ],
+      },
+      {
+        heading: "Le cas particulier des restaurants",
+        paragraphs: [
+          "Un débarras de restaurant à Gatineau implique souvent : équipement de cuisine commercial (gros volume, lourd, parfois encore connecté au gaz ou à l'électricité), grandes quantités de vaisselle et ustensiles, mobilier de salle à manger, et parfois des huiles de friture résiduelles ou contenants de produits alimentaires.",
+          "L'équipement de cuisine commercial peut souvent être revendu : il existe un marché actif à Gatineau et à Ottawa pour le restaurant qui vient de fermer. Un service de débarras qui collabore avec un revendeur peut vous offrir une remise sur le débarras en échange du droit de revendre l'équipement.",
+          "Les huiles de friture usagées doivent être collectées par un récupérateur autorisé — ne les versez jamais dans les drains ni dans les ordures. La plupart des municipalités offrent une collecte gratuite ou à frais réduits pour les restaurants.",
+        ],
+      },
+      {
+        heading: "Comment on fonctionne pour le commercial",
+        paragraphs: [
+          "Notre approche pour les débarras commerciaux à Gatineau : visite gratuite sur place pour évaluer le volume et identifier ce qui peut être récupéré, soumission écrite avec décomposition par catégorie (matériaux à recycler, matériaux à l'écocentre, matériaux à donner), et planification de la journée (ou des journées) selon votre échéance de fin de bail.",
+          "On peut intervenir hors heures d'ouverture (soir, fin de semaine) sans surcharge pour les locaux dans des immeubles où le débarras pendant les heures d'affaires dérange les autres locataires.",
+          "On émet une facture détaillée avec TPS/TVQ, utile pour la comptabilité de fermeture et pour les déductions fiscales applicables.",
+        ],
+      },
+    ],
+    closing: "Un débarras commercial bien planifié protège votre dépôt de garantie, respecte vos obligations de bail, et libère votre équipe pour se concentrer sur la transition. Pour une visite d'évaluation sans frais, contactez-nous quelques semaines avant votre date de fin de bail.",
+  },
+  en: {
+    title: "Commercial and Office Cleanout in Gatineau: What You Need to Know",
+    metaDescription: "Office, commercial space, and restaurant cleanouts in Gatineau: what's taken, how to plan it, and what your lease often requires.",
+    intro: "Clearing an office, commercial space, or restaurant in Gatineau has little in common with residential cleanout. More volume, more specialized materials, and almost always a date constraint due to lease end. Here's how to plan a commercial cleanout without missing your date or losing your deposit.",
+    sections: [
+      {
+        heading: "What your lease almost always requires",
+        paragraphs: [
+          "Most commercial leases in Gatineau require the tenant to return the space 'in the condition received', which often includes: removal of partitions and tenant improvements, dismantling and removal of interior and exterior signage, removal of all non-fixed equipment, and professional final cleaning.",
+          "Read the 'return of premises' or 'end-of-lease condition' clauses carefully. Many landlords hold back part of the deposit if the tenant leaves elements that should have been removed — even if they're functional.",
+          "If you're unsure what stays and what goes, ask for written confirmation from the landlord before starting the cleanout. An email is enough as a record.",
+        ],
+      },
+      {
+        heading: "What's taken in a commercial cleanout",
+        paragraphs: [
+          "Office furniture: desks, chairs, filing cabinets, disassembled workstations, shelving. If furniture is in good shape, we can redirect it to an office furniture exchange rather than the eco-centre.",
+          "Specialized equipment: restaurant gear (commercial ranges, commercial dishwashers, hoods), gym equipment, salon equipment (dryers, sinks), commercial garage equipment.",
+          "Electronics and IT: computers, multifunction printers, monitors, servers, network cabling. All of it goes through electronics recycling (ARPE-Québec) rather than landfill.",
+          "Partitions and tenant improvements: drywall panels, raised floors, dismantled drop ceilings, commercial carpet. This is the main volume of an end-of-lease cleanout.",
+        ],
+      },
+      {
+        heading: "Planning the cleanout for the key handover date",
+        paragraphs: [
+          "Count backward from the key handover date (often the last day of the last month of the lease). You want: complete cleanout 3-4 days before handover, final cleaning 1-2 days before, and actual handover with your landlord on the scheduled date.",
+          "Book the cleanout 2-3 weeks ahead. Commercial lease ends concentrate around June (before July 1) and December — availability tightens in those periods.",
+          "If you're relocating equipment elsewhere (move, not closure), coordinate with the commercial mover before booking the cleanout. You want the move to precede the cleanout by a few days to keep things separate.",
+        ],
+      },
+      {
+        heading: "The special case of restaurants",
+        paragraphs: [
+          "A restaurant cleanout in Gatineau usually involves: commercial kitchen equipment (large, heavy, sometimes still hooked up to gas or electricity), large quantities of dishware and utensils, dining furniture, and sometimes residual fryer oil or food product containers.",
+          "Commercial kitchen equipment can often be resold: there's an active market in Gatineau-Ottawa for a closing restaurant's equipment. A cleanout service that partners with a reseller can offer you a discount on cleanout in exchange for the right to resell the equipment.",
+          "Used fryer oil must be collected by an authorized recycler — never pour it down the drain or into the trash. Most municipalities offer free or reduced-fee collection for restaurants.",
+        ],
+      },
+      {
+        heading: "How we work for commercial",
+        paragraphs: [
+          "Our approach for commercial cleanouts in Gatineau: free on-site visit to estimate volume and identify recoverables, written quote with category breakdown (recyclables, eco-centre items, donations), and day(s) planned around your lease end deadline.",
+          "We can work outside business hours (evenings, weekends) at no surcharge for spaces in buildings where business-hours cleanout disturbs other tenants.",
+          "We issue a detailed invoice with GST/QST, useful for closure accounting and applicable tax deductions.",
+        ],
+      },
+    ],
+    closing: "A well-planned commercial cleanout protects your security deposit, meets your lease obligations, and frees your team to focus on the transition. For a free assessment visit, contact us a few weeks before your lease-end date.",
+  },
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Eco-centre Gatineau — what gets accepted, hours, fees
+// ─────────────────────────────────────────────────────────────────────────────
+const ECOCENTRE_GUIDE: Record<Lang, LongFormContent> = {
+  fr: {
+    title: "Écocentres de Gatineau : ce qui s'accepte, ce qui coûte, et quand préférer un débarras",
+    metaDescription: "Guide pratique des écocentres municipaux à Gatineau : matières acceptées, limites par résident, frais, et quand un service de débarras est plus économique.",
+    intro: "Les écocentres municipaux de Gatineau sont l'option la moins chère pour disposer de certains déchets — quand vous avez le bon véhicule, le temps, et que vous restez dans les quotas. Mais le calcul change vite quand le volume dépasse une demi-charge de pickup ou que vous avez besoin de plusieurs voyages. Voici exactement ce qui s'accepte, ce qui coûte, et quand un service de débarras devient plus avantageux.",
+    sections: [
+      {
+        heading: "Les écocentres de Gatineau et leurs limites",
+        paragraphs: [
+          "La Ville de Gatineau opère plusieurs écocentres répartis sur le territoire pour servir les secteurs Hull, Gatineau, Aylmer, Buckingham et Masson-Angers. Les horaires varient par saison et chaque écocentre a sa spécialité — vérifiez les heures actuelles directement sur le site de la Ville avant de vous déplacer.",
+          "Les écocentres sont réservés aux résidents de Gatineau. Vous devez présenter une preuve de résidence (carte d'identité avec adresse, facture récente de service public, permis de conduire). Sans preuve, l'accès est refusé.",
+          "Les véhicules acceptés sont les voitures, VUS et camions de promenade (moins de 1 tonne, plate-forme inférieure à 2,5 m). Les remorques sont permises mais ont des restrictions de taille. Les camions commerciaux ne sont pas admis aux écocentres — il faut passer par un centre de tri privé ou un débarras.",
+        ],
+      },
+      {
+        heading: "Ce qui s'accepte gratuitement (résidents)",
+        paragraphs: [
+          "Matières recyclables : carton, papier, plastique, verre, métal (au-delà des bacs de collecte régulière).",
+          "Matières organiques : feuilles mortes, branches courtes (jusqu'à un certain diamètre), résidus de jardin et de cuisine.",
+          "Encombrants et meubles : sofas, tables, matelas, vieux électroménagers sans HFC, planches et bois traité (avec limite de volume annuelle).",
+          "RDD (résidus domestiques dangereux) : peinture, solvants, huiles, batteries, ampoules fluocompactes, piles, contenants sous pression vides.",
+          "Électronique : tout ce que l'ARPE-Québec collecte (TV, ordinateurs, écrans, imprimantes, accessoires).",
+          "Pneus : 4 pneus de voiture par résident par année gratuits (au-delà, frais à la pièce).",
+        ],
+      },
+      {
+        heading: "Ce qui coûte des frais (et combien environ)",
+        paragraphs: [
+          "Sans donner de chiffres exacts (les tarifs municipaux changent), les principaux postes payants sont : volumes au-delà de la limite gratuite annuelle (typiquement 1-3 m³ par résident selon la catégorie), électroménagers contenant des HFC (frigos, congélateurs, climatiseurs — frais de gestion des fluides frigorigènes), pneus au-delà des 4 gratuits, et certains matériaux de construction en volume important.",
+          "Les frais s'appliquent par poids ou par pièce selon la matière. Pour les frigos et climatiseurs, c'est typiquement entre 20 $ et 40 $ par appareil au tarif municipal actuel.",
+          "Si vous avez plusieurs catégories à frais combinés, la facture grimpe vite — c'est souvent le moment où un service de débarras qui prend tout en un passage devient plus compétitif.",
+        ],
+      },
+      {
+        heading: "Le vrai coût d'un voyage à l'écocentre",
+        paragraphs: [
+          "Le coût visible : les frais municipaux (souvent zéro pour de petites quantités).",
+          "Le coût caché : essence aller-retour (8-15 $ selon votre véhicule et la distance à votre écocentre le plus proche), temps de chargement à la maison (30-90 minutes), temps de déplacement et de file à l'écocentre (1-2 heures, surtout en weekend), temps de déchargement, et usure de votre véhicule (un coffre rempli de pneus ou de débris de rénovation laisse des marques).",
+          "Pour un seul voyage avec une demi-charge, l'écocentre reste imbattable côté prix. Pour 3-4 voyages, la donne change.",
+        ],
+      },
+      {
+        heading: "Quand un service de débarras est plus avantageux",
+        paragraphs: [
+          "Si vous avez plus d'une charge de pickup pleine à évacuer : un débarras qui vient avec un camion plus grand fait tout en un passage, sans le casse-tête logistique.",
+          "Si vous n'avez pas de véhicule ou qu'il est mal adapté (citadine, petite hatchback) : la location d'une remorque ou d'un pickup peut coûter aussi cher que le débarras lui-même.",
+          "Si le contenu est lourd ou demande deux personnes (frigo, sofa de cuir, électros) : monter ces objets dans votre véhicule au sous-sol, conduire à l'écocentre, et les décharger demande de l'aide. Une équipe de débarras le fait par défaut.",
+          "Si vous avez plusieurs catégories à frais à l'écocentre (frigo + pneus + débris de rénovation + RDD) : le total des frais municipaux peut s'approcher du prix d'un débarras complet, sans le temps et le déplacement.",
+        ],
+      },
+    ],
+    closing: "L'écocentre est l'option championne pour les petites quantités planifiables. Pour le volume, l'urgence, ou les objets lourds, un service de débarras à domicile fait gagner du temps et souvent de l'argent. Pour une soumission gratuite qui compare honnêtement les deux options, contactez-nous.",
+  },
+  en: {
+    title: "Gatineau Eco-Centres: What's Accepted, What Costs, and When to Choose Junk Removal Instead",
+    metaDescription: "Practical guide to Gatineau municipal eco-centres: accepted materials, per-resident limits, fees, and when junk removal is the better economic choice.",
+    intro: "Gatineau's municipal eco-centres are the cheapest option to dispose of certain waste — when you have the right vehicle, the time, and stay within the quotas. But the math changes fast when volume exceeds half a pickup or you need multiple trips. Here's exactly what's accepted, what costs, and when junk removal becomes more advantageous.",
+    sections: [
+      {
+        heading: "Gatineau's eco-centres and their limits",
+        paragraphs: [
+          "The City of Gatineau operates several eco-centres spread across the territory serving the Hull, Gatineau, Aylmer, Buckingham, and Masson-Angers sectors. Hours vary by season and each centre has its specialty — check current hours directly on the City's website before going.",
+          "Eco-centres are restricted to Gatineau residents. You must show proof of residency (ID with address, recent utility bill, driver's licence). Without proof, access is denied.",
+          "Accepted vehicles are cars, SUVs, and light pickups (under 1 tonne, bed under 2.5 m). Trailers are allowed with size restrictions. Commercial trucks are not admitted to eco-centres — those go through a private sorting centre or a junk removal service.",
+        ],
+      },
+      {
+        heading: "What's accepted free of charge (residents)",
+        paragraphs: [
+          "Recyclables: cardboard, paper, plastic, glass, metal (beyond regular collection bin capacity).",
+          "Organics: leaves, short branches (up to a certain diameter), garden and kitchen residues.",
+          "Bulky items and furniture: sofas, tables, mattresses, old appliances without HFCs, planks and treated wood (annual volume cap applies).",
+          "HHW (household hazardous waste): paint, solvents, oils, batteries, CFL bulbs, batteries, empty pressurized containers.",
+          "Electronics: anything ARPE-Québec collects (TVs, computers, monitors, printers, accessories).",
+          "Tires: 4 car tires per resident per year free (beyond that, per-piece fees apply).",
+        ],
+      },
+      {
+        heading: "What costs fees (and roughly how much)",
+        paragraphs: [
+          "Without giving exact figures (municipal rates change), the main paid categories are: volumes beyond the annual free limit (typically 1-3 m³ per resident by category), appliances containing HFCs (fridges, freezers, AC units — refrigerant handling fee), tires beyond the 4 free ones, and certain construction materials in large volume.",
+          "Fees apply by weight or by piece depending on the material. For fridges and AC units, it's typically between $20 and $40 per unit at current municipal rates.",
+          "If you have multiple paid categories, the bill climbs fast — this is often when a junk removal service that takes everything in one pass becomes more competitive.",
+        ],
+      },
+      {
+        heading: "The real cost of an eco-centre trip",
+        paragraphs: [
+          "Visible cost: municipal fees (often zero for small quantities).",
+          "Hidden cost: gas round-trip ($8-15 depending on vehicle and distance to your nearest eco-centre), home loading time (30-90 minutes), driving and queue time (1-2 hours, especially weekends), unloading time, and vehicle wear (a trunk full of tires or renovation debris leaves marks).",
+          "For a single trip with half a load, the eco-centre is unbeatable on price. For 3-4 trips, the equation changes.",
+        ],
+      },
+      {
+        heading: "When junk removal is more advantageous",
+        paragraphs: [
+          "If you have more than a full pickup load to clear: a removal service with a bigger truck does it all in one pass, with no logistical headache.",
+          "If you don't have a suitable vehicle (compact car, small hatchback): renting a trailer or pickup can cost as much as the removal service itself.",
+          "If contents are heavy or two-person items (fridge, leather sofa, appliances): hauling these from the basement into your vehicle, driving to the eco-centre, and unloading them needs help. A removal crew does this by default.",
+          "If you have several fee categories at the eco-centre (fridge + tires + reno debris + HHW): the total municipal fees can approach the price of a complete removal, without the time and travel.",
+        ],
+      },
+    ],
+    closing: "The eco-centre is the champion option for small, planned quantities. For volume, urgency, or heavy items, on-site junk removal saves time and often money. For a free quote that honestly compares both options, contact us.",
+  },
+};
+
+export function getEstateCleanoutGuide(lang: Lang): LongFormContent {
+  return ESTATE_CLEANOUT[lang];
+}
+export function getGarageCleanoutGuide(lang: Lang): LongFormContent {
+  return GARAGE_CLEANOUT[lang];
+}
+export function getCommercialCleanoutGuide(lang: Lang): LongFormContent {
+  return COMMERCIAL_CLEANOUT[lang];
+}
+export function getEcocentreGuide(lang: Lang): LongFormContent {
+  return ECOCENTRE_GUIDE[lang];
+}

@@ -63,6 +63,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       "debarras-renovation",
       "debarras-demenagement",
       "preparation",
+      "succession-debarras",
+      "vider-garage",
+      "debarras-commercial",
+      "ecocentre-gatineau",
       "partenaires",
     ]) {
       entries.push({

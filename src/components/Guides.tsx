@@ -10,6 +10,10 @@ import {
   getPostRenoGuide,
   getMovingDayGuide,
   getPrepGuide,
+  getEstateCleanoutGuide,
+  getGarageCleanoutGuide,
+  getCommercialCleanoutGuide,
+  getEcocentreGuide,
 } from "@/lib/long-tail-content";
 
 interface Props {
@@ -33,15 +37,22 @@ export function Guides({ lang }: Props) {
       ? "Ce qui s'accepte, ce qui se recycle, et la manière la plus simple de s'en débarrasser à Gatineau."
       : "What's accepted, what's recycled, and the easiest way to get rid of it in Gatineau.";
 
+  // Ordered for the homepage: highest-intent / highest-ticket first
+  // (succession + commercial), then common household tasks, then the
+  // operational/informational guides.
   const items = [
+    { slug: "succession-debarras", content: getEstateCleanoutGuide(lang) },
+    { slug: "vider-garage", content: getGarageCleanoutGuide(lang) },
+    { slug: "debarras-commercial", content: getCommercialCleanoutGuide(lang) },
+    { slug: "debarras-demenagement", content: getMovingDayGuide(lang) },
+    { slug: "debarras-renovation", content: getPostRenoGuide(lang) },
     { slug: "comment-jeter-matelas", content: getMattressGuide(lang) },
     { slug: "comment-jeter-frigo", content: getFridgeGuide(lang) },
     { slug: "comment-jeter-sofa", content: getSofaGuide(lang) },
     { slug: "comment-jeter-electroniques", content: getElectronicsGuide(lang) },
     { slug: "comment-jeter-television", content: getTvGuide(lang) },
     { slug: "comment-jeter-pneus", content: getTiresGuide(lang) },
-    { slug: "debarras-renovation", content: getPostRenoGuide(lang) },
-    { slug: "debarras-demenagement", content: getMovingDayGuide(lang) },
+    { slug: "ecocentre-gatineau", content: getEcocentreGuide(lang) },
     { slug: "preparation", content: getPrepGuide(lang) },
   ];
 
