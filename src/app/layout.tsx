@@ -73,6 +73,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     ],
     paymentAccepted: ["Cash", "Credit Card", "Debit Card", "Interac e-Transfer"],
     priceRange: "$$",
+    // Cross-property identity signal. Lists the other places this business
+    // appears so Google can entity-resolve them as the same operator
+    // (strengthens local-pack ranking). Add each new profile as it goes live.
+    sameAs: [
+      "https://medium.com/@hello_22552/comment-se-d%C3%A9barrasser-de-vos-encombrants-%C3%A0-gatineau-sans-surprises-matelas-%C3%A9lectros-f910956d1a06",
+    ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       // Niche-agnostic: use the brand name. Brand already encodes the niche

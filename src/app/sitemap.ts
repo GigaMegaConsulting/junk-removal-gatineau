@@ -63,6 +63,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       "debarras-renovation",
       "debarras-demenagement",
       "preparation",
+      "partenaires",
     ]) {
       entries.push({
         url: `${base}/${lang}/${path}`,
