@@ -1302,3 +1302,53 @@ export function getCommercialCleanoutGuide(lang: Lang): LongFormContent {
 export function getEcocentreGuide(lang: Lang): LongFormContent {
   return ECOCENTRE_GUIDE[lang];
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Related-guides registry — used by LongFormPage to cross-link long-tail
+// content. The order here matches the homepage Guides component intent
+// (highest-ticket first). getRelatedGuides() returns 3 entries excluding
+// the current slug — cheap topical-cluster signal for Google.
+// ─────────────────────────────────────────────────────────────────────────────
+const GUIDE_REGISTRY: Array<{ slug: string; get: (lang: Lang) => LongFormContent }> = [
+  { slug: "succession-debarras", get: getEstateCleanoutGuide },
+  { slug: "vider-garage", get: getGarageCleanoutGuide },
+  { slug: "debarras-commercial", get: getCommercialCleanoutGuide },
+  { slug: "debarras-demenagement", get: getMovingDayGuide },
+  { slug: "debarras-renovation", get: getPostRenoGuide },
+  { slug: "comment-jeter-matelas", get: getMattressGuide },
+  { slug: "comment-jeter-frigo", get: getFridgeGuide },
+  { slug: "comment-jeter-sofa", get: getSofaGuide },
+  { slug: "comment-jeter-electroniques", get: getElectronicsGuide },
+  { slug: "comment-jeter-television", get: getTvGuide },
+  { slug: "comment-jeter-pneus", get: getTiresGuide },
+  { slug: "ecocentre-gatineau", get: getEcocentreGuide },
+  { slug: "preparation", get: getPrepGuide },
+];
+
+export interface RelatedGuide {
+  slug: string;
+  title: string;
+  metaDescription: string;
+}
+
+export function getRelatedGuides(currentSlug: string, lang: Lang, count = 3): RelatedGuide[] {
+  // Stable deterministic selection: skip the current slug, then take the
+  // next `count` entries (wrapping around). Keeps the related list stable
+  // across builds (good for CWV / cache) while still differing per page.
+  const others = GUIDE_REGISTRY.filter(g => g.slug !== currentSlug);
+  const startIdx = Math.abs(hashCode(currentSlug)) % others.length;
+  const picked: typeof others = [];
+  for (let i = 0; i < count && i < others.length; i++) {
+    picked.push(others[(startIdx + i) % others.length]);
+  }
+  return picked.map(p => {
+    const c = p.get(lang);
+    return { slug: p.slug, title: c.title, metaDescription: c.metaDescription };
+  });
+}
+
+function hashCode(s: string): number {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0;
+  return h;
+}
