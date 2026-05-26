@@ -68,6 +68,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       "debarras-commercial",
       "ecocentre-gatineau",
       "partenaires",
+      "guides",
     ]) {
       entries.push({
         url: `${base}/${lang}/${path}`,
