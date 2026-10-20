@@ -72,6 +72,8 @@ function buildTwiml(): string {
   <Record
     action="/api/voice/recorded"
     method="POST"
+    recordingStatusCallback="/api/voice/recording-ready"
+    recordingStatusCallbackEvent="completed"
     maxLength="120"
     timeout="5"
     finishOnKey="*"
