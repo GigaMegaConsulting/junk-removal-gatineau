@@ -29,8 +29,8 @@ const brandFr = () => siteConfig.fr?.brandName || siteConfig.city;
 const brandEn = () => siteConfig.en?.brandName || siteConfig.city;
 
 export function voicemailTwiml(): string {
-  const greetingFr = `Bonjour, vous avez bien rejoint ${brandFr()}. Laissez-nous votre nom, votre adresse et la nature de votre demande après le bip.`;
-  const greetingEn = `Hello, you have reached ${brandEn()}. After the beep, please leave your name, address, and what you need.`;
+  const greetingFr = `Bonjour, vous avez bien rejoint ${brandFr()}. Après le bip, laissez votre nom, votre numéro de téléphone, votre adresse et la nature de votre demande.`;
+  const greetingEn = `Hello, you have reached ${brandEn()}. After the beep, please leave your name, phone number, address, and what you need.`;
   return `<?xml version="1.0" encoding="UTF-8"?>
 <Response>
   <Say voice="Polly.Chantal" language="fr-CA">${escapeXml(greetingFr)}</Say>

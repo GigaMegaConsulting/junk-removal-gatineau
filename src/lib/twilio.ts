@@ -48,6 +48,21 @@ export async function fetchRecordingMp3(recordingSid: string): Promise<ArrayBuff
   return res.arrayBuffer();
 }
 
+// The recording-status callback does not carry the caller's number; look it up
+// from the call. Returns "" for a hidden number or when the lookup fails.
+export async function callerOf(callSid: string): Promise<string> {
+  const c = creds();
+  if (!c || !callSid) return "";
+  try {
+    const res = await fetch(`https://api.twilio.com/2010-04-01/Accounts/${c.sid}/Calls/${callSid}.json`, { headers: { Authorization: c.auth }, cache: "no-store" });
+    if (!res.ok) return "";
+    const j = (await res.json()) as { from?: string };
+    return /^\+\d{8,15}$/.test(j.from || "") ? (j.from as string) : "";
+  } catch {
+    return "";
+  }
+}
+
 // Twilio webhooks arrive as application/x-www-form-urlencoded.
 export async function parseTwilioForm(req: Request): Promise<Record<string, string>> {
   const ct = req.headers.get("content-type") || "";

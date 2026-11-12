@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { siteConfig } from "@/lib/site.config";
-import { parseTwilioForm, fetchRecordingMp3, sendSms } from "@/lib/twilio";
+import { parseTwilioForm, fetchRecordingMp3, sendSms, callerOf } from "@/lib/twilio";
 import { transcribe } from "@/lib/transcribe";
 import { brevoSend, esc, TO_EMAIL_DEFAULT } from "@/lib/brevo";
 import { partner } from "@/lib/reply";
@@ -22,7 +22,10 @@ export async function POST(req: Request) {
   if (p.RecordingStatus && p.RecordingStatus !== "completed") return new NextResponse("ok");
 
   const sid = p.RecordingSid || "";
-  const from = p.From || p.Caller || "";
+  const from = p.From || p.Caller || (await callerOf(p.CallSid || ""));
+  // Hidden number: no automatic text could be sent, so the only way back to
+  // this caller is the number they dictate in the message.
+  const fromLabel = from || "numéro masqué";
   const brandFr = siteConfig.fr?.brandName || siteConfig.city;
 
   let transcript: { text: string; lang: string } | null = null;
@@ -39,26 +42,27 @@ export async function POST(req: Request) {
   const blob = `<!--VMJSON:${Buffer.from(record).toString("base64")}:VMJSON-->`;
   const lines = [
     `New voicemail on ${siteConfig.domain}`,
-    `From: ${from}`,
+    `From: ${fromLabel}`,
+    ...(from ? [] : ["NO AUTOMATIC TEXT WAS SENT (hidden number). Call back the number dictated in the message."]),
     `Duration: ${p.RecordingDuration || "?"}s · Recording ${sid}`,
     "",
     transcript ? `Transcript (${transcript.lang}):\n${transcript.text}` : "Transcript: unavailable (transcription failed — see Mission Control voicemails tab).",
   ];
   const text = lines.join("\n");
-  const html = `<h2>New voicemail from ${esc(from)}</h2><p><strong>Site:</strong> ${esc(siteConfig.domain)} · ${esc(p.RecordingDuration || "?")}s</p>` +
+  const html = `<h2>New voicemail from ${esc(fromLabel)}</h2>${from ? "" : "<p><strong>No automatic text was sent (hidden number). Call back the number dictated in the message.</strong></p>"}<p><strong>Site:</strong> ${esc(siteConfig.domain)} · ${esc(p.RecordingDuration || "?")}s</p>` +
     `<p style="white-space:pre-wrap">${esc(transcript ? transcript.text : "Transcript unavailable.")}</p>${blob}`;
   const n = await brevoSend({
     from: { email: process.env.LEAD_FROM_EMAIL || `noreply@${siteConfig.domain}`, name: `${siteConfig.city} Leads` },
     to: { email: process.env.LEAD_TO_EMAIL || TO_EMAIL_DEFAULT },
-    subject: `Nouveau message vocal — ${brandFr} (${from})`, text, html,
+    subject: `${from ? "" : "À RAPPELER — "}Nouveau message vocal — ${brandFr} (${fromLabel})`, text, html,
   });
   if (!n.ok) console.error("[voice/recording-ready] owner notification failed:", n.error);
 
   const pt = partner();
   if (pt) {
-    const lead = `Nouveau lead ${brandFr} (message vocal) — ${from}${transcript ? ` : ${transcript.text}` : ""}`;
+    const lead = `Nouveau lead ${brandFr} (message vocal) — ${fromLabel}${transcript ? ` : ${transcript.text}` : ""}`;
     if (pt.phone) await sendSms({ from: siteConfig.phone, to: pt.phone, body: lead.slice(0, 1500) });
-    if (pt.email) await brevoSend({ from: { email: process.env.LEAD_FROM_EMAIL || `noreply@${siteConfig.domain}`, name: brandFr }, to: { email: pt.email }, subject: `Nouveau lead — ${brandFr} (${from})`, text: lead, html: `<p>${esc(lead)}</p>` });
+    if (pt.email) await brevoSend({ from: { email: process.env.LEAD_FROM_EMAIL || `noreply@${siteConfig.domain}`, name: brandFr }, to: { email: pt.email }, subject: `Nouveau lead — ${brandFr} (${fromLabel})`, text: lead, html: `<p>${esc(lead)}</p>` });
   }
   return new NextResponse("ok");
 }

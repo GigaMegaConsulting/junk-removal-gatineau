@@ -2,7 +2,7 @@
 
 // Reusable lead form. POSTs JSON to /api/lead. Handles loading + success +
 // error states inline so we never need a separate thank-you page.
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { Lang } from "@/lib/site.config";
 import { t } from "@/lib/copy";
 
@@ -18,11 +18,17 @@ export function QuoteForm({ lang, source, variant = "stacked" }: Props) {
   const tt = t(lang);
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const inFlight = useRef(false); // blocks a second submit before React re-renders
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (status === "submitting") return;
-    const fd = new FormData(e.currentTarget);
+    if (inFlight.current || status === "submitting") return;
+    inFlight.current = true;
+    // Keep the form node: React clears e.currentTarget once the handler yields,
+    // so reading it after the await threw, the catch showed "Erreur d'envoi" on
+    // a lead that had been sent, and customers submitted a second time.
+    const form = e.currentTarget;
+    const fd = new FormData(form);
     setStatus("submitting");
     setErrorMessage("");
     try {
@@ -45,11 +51,13 @@ export function QuoteForm({ lang, source, variant = "stacked" }: Props) {
         setStatus("error");
         return;
       }
+      form.reset();
       setStatus("success");
-      e.currentTarget.reset();
     } catch (err) {
       setErrorMessage(err instanceof Error ? err.message : "Network error");
       setStatus("error");
+    } finally {
+      inFlight.current = false;
     }
   }
 
@@ -62,12 +70,12 @@ export function QuoteForm({ lang, source, variant = "stacked" }: Props) {
       }>
         <div className="text-3xl mb-3">✓</div>
         <p className="text-lg font-semibold mb-1">
-          {lang === "fr" ? "Merci, on vous rappelle." : "Thanks — we'll be in touch."}
+          {lang === "fr" ? "Merci, demande reçue." : "Thanks, request received."}
         </p>
         <p className="text-sm text-[#5a5a5a]">
           {lang === "fr"
-            ? "Votre demande a été reçue. Pour une réponse immédiate, appelez-nous."
-            : "We received your request. For immediate help, give us a call."}
+            ? "Vous recevrez dans un instant un courriel et un texto avec les prochaines étapes."
+            : "An email and a text with the next steps are on their way to you now."}
         </p>
       </div>
     );
